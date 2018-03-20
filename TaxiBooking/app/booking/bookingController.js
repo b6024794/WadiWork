@@ -1,5 +1,16 @@
 ﻿angular.module("bookingApp").controller("bookingController", function ($scope, $http) {
-    var bookingId;
+
+    $scope.init = function () {
+        $http.get("http://webteach_net.hallam.shu.ac.uk/acesjas/api/booking")
+            .success(function (response) {
+                $scope.bookings = response;
+            })
+            .error(function (error) {
+                $scope.errorMessage = error;
+            });
+
+    };
+
 
     $http.get("http://webteach_net.hallam.shu.ac.uk/acesjas/api/booking")
         .success(function (response) {
@@ -8,14 +19,8 @@
         .error(function (error) {
             $scope.errorMessage = error;
         });
-    $scope.init = function () {
-        $http.get("http://webteach_net.hallam.shu.ac.uk/acesjas/api/booking")
-            .success(function (response) {
-                $scope.bookings = response;
-            })
 
-    };
-  
+    var bookingId;
 
 
 
@@ -33,7 +38,7 @@
             CurrentPassenger: $scope.CurrentPassenger
         };
 
-        $http.push("http://webteach_net.hallam.shu.ac.uk/acesjas/api/booking", bookingDetails);
+        $http.post("http://webteach_net.hallam.shu.ac.uk/acesjas/api/booking", bookingDetails);
 
 
         //clears text fields
@@ -43,7 +48,6 @@
         $scope.VehicleId = "";
         $scope.CurrentPassenger = "";
         //need code to reload data
-        
     };
 
     //function to remove a booking

@@ -1,43 +1,49 @@
 ﻿<!DOCTYPE html>
 <html ng-app="taxiApp">
 <head>
+    <link href="assets/stylesheet.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>   
     <meta charset="utf-8" />
     <title>Booking Application</title>
 </head>
 <body ng-controller="bookingController">
     <h1>Taxi Booking Application</h1>
+    
     <div ng-show="viewBookings">
-            <ol>
-                <li ng-repeat="booking in bookings ">
-                    <p> ID: {{booking.Id}}<br />
-                    Name: {{booking.PassengerName}}<br />
-                    Pickup: {{booking.PickupLocation}}<br />
-                    Drop off:{{booking.DropOffLocation}}<br />
-                    VehicleId : {{booking.VehicleId}}<br />
-                    current passenger: {{booking.CurrentPassenger}}<br />
-                    <a href="" ng-click="remove(booking.Id)">Remove</a>
-                    </p>
-   
-                </li>
-            </ol>
-        <button ng-click="closeBookings()">close bookings</button>
+        <table style="width:100%">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Pickup</th>
+                <th>Drop Off</th>
+                <th>Vehicle ID</th>
+                <th>Current Passenger</th>
+            </tr>
+            <tr ng-repeat="booking in bookings">
+                <td>{{booking.Id}}</td>
+                <td>{{booking.PassengerName}}</td>
+                <td>{{booking.PickupLocation}}</td>
+                <td>{{booking.DropOffLocation}}</td>
+                <td>{{booking.VehicleId}}</td>
+                <td>{{booking.CurrentPassenger}}</td>
+                <td><a href="" ng-click="remove(booking.Id)">Remove</a></td>
+            </tr>
+        </table>
       </div>
+    <button ng-click="closeBookings()">close bookings</button>
     <button ng-click="openBookings()">View bookings</button>
     
 
     <div ng-show="BookingsForm">
         <h2>Add Booking</h2>
-        <p>
-            <label>Passenger Name  <input ng-model="PassengerName" /></label><br />
-            <label>Pickup Location  <input ng-model="PickupLocation" /></label><br />
-            <label>Dropoff Location  <input ng-model="DropOffLocation" /></label><br />
-            <label>VehicleId  <input ng-model="VehicleId" /></label><br />
-            <label>Current passengers <input ng-model="CurrentPassenger" /></label><br />
-            <button ng-click="addBooking()">Add</button><br />
-        </p>
-        <button ng-click="closeBookingForm()">cancel</button>
+        <label>Passenger Name  <input ng-model="PassengerName" /></label><br />
+        <label>Pickup Location  <input ng-model="PickupLocation" /></label><br />
+        <label>Dropoff Location  <input ng-model="DropOffLocation" /></label><br />
+        <label>VehicleId  <input ng-model="VehicleId" /></label><br />
+        <label>Current passengers <input ng-model="CurrentPassenger" /></label><br />
+        <button ng-click="addBooking();init()">Add</button><br />
     </div>
+        <button ng-click="closeBookingForm()">cancel</button>
     <button ng-click="viewBookingForm()">Add bookings</button>
     
 
