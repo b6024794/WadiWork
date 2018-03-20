@@ -12,17 +12,19 @@
                 <li ng-repeat="booking in bookings ">
                     <p> ID: {{booking.Id}}<br />
                     Name: {{booking.PassengerName}}<br />
-                     Pickup: {{booking.PickupLocation}}<br />
+                    Pickup: {{booking.PickupLocation}}<br />
                     Drop off:{{booking.DropOffLocation}}<br />
-                        VehicleId : {{booking.VehicleId}}<br />
-                     current passenger: {{booking.CurrentPassenger}}<br />
+                    VehicleId : {{booking.VehicleId}}<br />
+                    current passenger: {{booking.CurrentPassenger}}<br />
+                    <a href="" ng-click="remove(booking.Id)">Remove</a>
                     </p>
    
                 </li>
             </ol>
+        <button ng-click="closeBookings()">close bookings</button>
       </div>
     <button ng-click="openBookings()">View bookings</button>
-    <button ng-click="closeBookings()">close bookings</button>
+    
 
     <div ng-show="BookingsForm">
         <h2>Add Booking</h2>
@@ -34,9 +36,10 @@
             <label>Current passengers <input ng-model="CurrentPassenger" /></label><br />
             <button ng-click="addBooking()">Add</button><br />
         </p>
+        <button ng-click="closeBookingForm()">cancel</button>
     </div>
     <button ng-click="viewBookingForm()">Add bookings</button>
-    <button ng-click="closeBookingForm()">cancel</button>
+    
 
         <script src="app/myApp.js"></script>
         <script src="app/booking/bookingModule.js"></script>
