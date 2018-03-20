@@ -71,7 +71,7 @@
 
     
     <div ng-controller="VehicleController">
-        <div  ng-show="viewVehicle",">
+        <div  ng-show="viewVehicle">
             <table style="width:100%">
                 <tr>
                     <th>ID</th>
@@ -92,11 +92,28 @@
                     <td><a href="" ng-click="displayEditBooking(vehicle.Id)">Edit</a></td>
                 </tr>
             </table>
-    </div>
-
             <button ng-click="closeVehicle()">Close Vehicle</button>
+        
         </div>
-    <button ng-click="openVehicle()">Open Vehicle</button>
+
+        
+        <button ng-click="openVehicle()">Open Vehicle</button>
+    
+        <h2>Add Booking</h2>
+        <label>Make  <input ng-model="vehicleMake" /></label><br />
+        <label>Capacity <input ng-model="vehicleCapacity" /></label><br />
+        <label>Driver  <input ng-model="vehicleDriver" /></label><br />
+        <label>Reg  <input ng-model="vehicleRegistration" /></label><br />
+        <label>Model <input ng-model="vehicleModel" /></label><br />
+    <button ng-click="addVehicle(); init()">add vehicle</button>
+    
+    
+    
+    
+    
+    
+    </div>
+    
 
     <script src="app/myApp.js"></script>
     <script src="app/booking/bookingModule.js"></script>
