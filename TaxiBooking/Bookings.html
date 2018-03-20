@@ -6,8 +6,9 @@
     <meta charset="utf-8" />
     <title>Booking Application</title>
 </head>
+<h1>Taxi Booking Application</h1>
 <body ng-controller="bookingController">
-    <h1>Taxi Booking Application</h1>
+
     
     <div ng-show="viewBookings">
         <table style="width:100%">
@@ -27,11 +28,13 @@
                 <td>{{booking.VehicleId}}</td>
                 <td>{{booking.CurrentPassenger}}</td>
                 <td><a href="" ng-click="remove(booking.Id)">Remove</a></td>
+                <td><a href="" ng-click="displayEditBooking(booking.Id)">Edit</a></td>
             </tr>
         </table>
       </div>
-    <button ng-click="closeBookings()">close bookings</button>
-    <button ng-click="openBookings()">View bookings</button>
+    <button ng-click="openBookings()">Open bookings</button>
+    <button ng-click="closeBookings()">Close bookings</button>
+
     
 
     <div ng-show="BookingsForm">
@@ -41,15 +44,64 @@
         <label>Dropoff Location  <input ng-model="DropOffLocation" /></label><br />
         <label>VehicleId  <input ng-model="VehicleId" /></label><br />
         <label>Current passengers <input ng-model="CurrentPassenger" /></label><br />
-        <button ng-click="addBooking();init()">Add</button><br />
+        <button ng-click="addBooking()">Add</button><br />
     </div>
         <button ng-click="closeBookingForm()">cancel</button>
     <button ng-click="viewBookingForm()">Add bookings</button>
     
 
-        <script src="app/myApp.js"></script>
-        <script src="app/booking/bookingModule.js"></script>
-        <script src="app/booking/bookingController.js"></script>
+    <div ng-show="editBooking">
+        <h2>Edit a Booking</h2>
+        <label>Passenger Name  <input ng-model="EditPassengerName" /></label><br />
+        <label>Pickup Location  <input ng-model="EditPickupLocation" /></label><br />
+        <label>Dropoff Location  <input ng-model="EditDropOffLocation" /></label><br />
+        <label>VehicleId  <input ng-model="EditVehicleId" /></label><br />
+        <label>Current passengers <input ng-model="EditCurrentPassenger" /></label><br />
+        <button ng-click="edit()">edit</button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    
+    <div ng-controller="VehicleController">
+        <div  ng-show="viewVehicle",">
+            <table style="width:100%">
+                <tr>
+                    <th>ID</th>
+                    <th>Make</th>
+                    <th>Capacity</th>
+                    <th>Driver</th>
+                    <th>Registration</th>
+                    <th>Model</th>
+                </tr>
+                <tr ng-repeat="vehicle in Vehicles">
+                    <td>{{vehicle.Id}}</td>
+                    <td>{{vehicle.Make}}</td>
+                    <td>{{vehicle.Capacity}}</td>
+                    <td>{{vehicle.Driver}}</td>
+                    <td>{{vehicle.Registration}}</td>
+                    <td>{{vehicle.Model}}</td>
+                    <td><a href="" ng-click="remove(vehicle.Id)">Remove</a></td>
+                    <td><a href="" ng-click="displayEditBooking(vehicle.Id)">Edit</a></td>
+                </tr>
+            </table>
+    </div>
+
+            <button ng-click="closeVehicle()">Close Vehicle</button>
+        </div>
+    <button ng-click="openVehicle()">Open Vehicle</button>
+
+    <script src="app/myApp.js"></script>
+    <script src="app/booking/bookingModule.js"></script>
+    <script src="app/booking/bookingController.js"></script>
+    <script src="app/booking/VehicleController.js"></script>
 
 </body>
 </html>
